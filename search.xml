@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Writing a New Post</title>
+    <url>/2019/08/08/2019-08-08-write-a-new-post/</url>
+    <content><![CDATA[<h2 id="Naming-and-Path"><a href="#Naming-and-Path" class="headerlink" title="Naming and Path"></a>Naming and Path</h2><p>Create a new file named <code>YYYY-MM-DD-TITLE.EXTENSION</code> and put it in the <code>_posts/</code> of the root directory. Please note that the <code>EXTENSION</code> must be one of <code>md</code> and <code>markdown</code>.</p>
+<span id="more"></span>
+
+<h2 id="Front-Matter"><a href="#Front-Matter" class="headerlink" title="Front Matter"></a>Front Matter</h2><p>Basically, you need to fill the <a href="https://jekyllrb.com/docs/front-matter/">Front Matter</a> as below at the top of the post:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">TITLE</span></span><br><span class="line"><span class="attr">date:</span> <span class="string">YYYY-MM-DD</span> <span class="string">HH:MM:SS</span> <span class="string">+/-TTTT</span></span><br><span class="line"><span class="attr">categories:</span> [<span class="string">TOP_CATEGORIE</span>, <span class="string">SUB_CATEGORIE</span>]</span><br><span class="line"><span class="attr">tags:</span> [<span class="string">TAG</span>]     <span class="comment"># TAG names should always be lowercase</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Note</strong>: The posts’ <em><strong>layout</strong></em> has been set to <code>post</code> by default, so there is no need to add the variable <em><strong>layout</strong></em> in the Front Matter block.</p>
+</blockquote>
+<h3 id="Timezone-of-date"><a href="#Timezone-of-date" class="headerlink" title="Timezone of date"></a>Timezone of date</h3><p>In order to accurately record the release date of a post, you should not only set up the <code>timezone</code> of <code>_config.yml</code> but also provide the post’s timezone in variable <code>date</code> of its Front Matter block. Format: <code>+/-TTTT</code>, e.g. <code>+0800</code>.</p>
+<h3 id="Categories-and-Tags"><a href="#Categories-and-Tags" class="headerlink" title="Categories and Tags"></a>Categories and Tags</h3><p>The <code>categories</code> of each post are designed to contain up to two elements, and the number of elements in <code>tags</code> can be zero to infinity. For instance:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">categories:</span> [<span class="string">Animal</span>, <span class="string">Insect</span>]</span><br><span class="line"><span class="attr">tags:</span> [<span class="string">bee</span>]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h2><p>By default, the <strong>T</strong>able <strong>o</strong>f <strong>C</strong>ontents (TOC) is displayed on the right panel of the post. If you want to turn it off globally, go to <code>_config.yml</code> and set the value of variable <code>toc</code> to <code>false</code>. If you want to turn off TOC for a specific post, add the following to the post’s <a href="https://jekyllrb.com/docs/front-matter/">Front Matter</a>:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">toc:</span> <span class="literal">false</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Comments"><a href="#Comments" class="headerlink" title="Comments"></a>Comments</h2><p>Similar to TOC, the <a href="https://disqus.com/">Disqus</a> comments are loaded by default in each post, and the global switch is defined by variable <code>comments</code> in file <code>_config.yml</code> . If you want to close the comment for a specific post, add the following to the <strong>Front Matter</strong> of the post:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">comments:</span> <span class="literal">false</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Mathematics"><a href="#Mathematics" class="headerlink" title="Mathematics"></a>Mathematics</h2><p>For website performance reasons, the mathematical feature won’t be loaded by default. But it can be enabled by:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">math:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Mermaid"><a href="#Mermaid" class="headerlink" title="Mermaid"></a>Mermaid</h2><p><a href="https://github.com/mermaid-js/mermaid"><strong>Mermaid</strong></a> is a great diagrams generation tool. To enable it on your post, add the following to the YAML block:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">mermaid:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>Then you can use it like other markdown languages: surround the graph code with <code>```mermaid</code> and <code>```</code>.</p>
+<h2 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h2><h3 id="Preview-image"><a href="#Preview-image" class="headerlink" title="Preview image"></a>Preview image</h3><p>If you want to add an image to the top of the post contents, specify the attribute <code>src</code>, <code>width</code>, <code>height</code>, and <code>alt</code> for the image:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">image:</span></span><br><span class="line">  <span class="attr">src:</span> <span class="string">/path/to/image/file</span></span><br><span class="line">  <span class="attr">width:</span> <span class="number">1000</span>   <span class="comment"># in pixels</span></span><br><span class="line">  <span class="attr">height:</span> <span class="number">400</span>   <span class="comment"># in pixels</span></span><br><span class="line">  <span class="attr">alt:</span> <span class="string">image</span> <span class="string">alternative</span> <span class="string">text</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<p>Except for <code>alt</code>, all other options are necessary, especially the <code>width</code> and <code>height</code>, which are related to user experience and web page loading performance. Later section <a href="#image-size">“Image size”</a> will also mention this.</p>
+<h3 id="Image-caption"><a href="#Image-caption" class="headerlink" title="Image caption"></a>Image caption</h3><p>Add italics to the next line of an image，then it will become the caption and appear at the bottom of the image:</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">img-description</span>](<span class="link">/path/to/image</span>)</span><br><span class="line"><span class="emphasis">_Image Caption_</span></span><br></pre></td></tr></table></figure>
+<p>{: .nolineno}</p>
+<h3 id="Image-size"><a href="#Image-size" class="headerlink" title="Image size"></a>Image size</h3><p>In order to prevent the page content layout from shifting when the image is loaded, we should set the width and height for each image:</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">Desktop View</span>](<span class="link">/assets/img/sample/mockup.png</span>)&#123;: width=&quot;700&quot; height=&quot;400&quot; &#125;</span><br></pre></td></tr></table></figure>
+<p>{: .nolineno}</p>
+<h3 id="Image-position"><a href="#Image-position" class="headerlink" title="Image position"></a>Image position</h3><p>By default, the image is centered, but you can specify the position by using one of the classes <code>normal</code>, <code>left</code>, and <code>right</code>. For example:</p>
+<ul>
+<li><p><strong>Normal position</strong></p>
+<p>Image will be left aligned in below sample:</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">Desktop View</span>](<span class="link">/assets/img/sample/mockup.png</span>)&#123;: .normal &#125;</span><br></pre></td></tr></table></figure>
+<p>{: .nolineno}</p>
+</li>
+<li><p><strong>Float to the left</strong></p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">Desktop View</span>](<span class="link">/assets/img/sample/mockup.png</span>)&#123;: .left &#125;</span><br></pre></td></tr></table></figure>
+<p>{: .nolineno}</p>
+</li>
+<li><p><strong>Float to the right</strong></p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">Desktop View</span>](<span class="link">/assets/img/sample/mockup.png</span>)&#123;: .right &#125;</span><br></pre></td></tr></table></figure>
+<p>{: .nolineno}</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Limitation</strong>: Once the position of the image is specified, the image caption should not be added.</p>
+</blockquote>
+<h3 id="Image-shadow"><a href="#Image-shadow" class="headerlink" title="Image shadow"></a>Image shadow</h3><p>The screenshots of the program window can be considered to show the shadow effect, and the shadow will be visible in the <code>light</code> mode:</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">Desktop View</span>](<span class="link">/assets/img/sample/mockup.png</span>)&#123;: .shadow &#125;</span><br></pre></td></tr></table></figure>
+<p>{: .nolineno}</p>
+<h3 id="CDN-URL"><a href="#CDN-URL" class="headerlink" title="CDN URL"></a>CDN URL</h3><p>If you host the images on the CDN, you can save the time of repeatedly writing the CDN URL by assigning the variable <code>img_cdn</code> of <code>_config.yml</code> file:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">img_cdn:</span> <span class="string">https://cdn.com</span></span><br></pre></td></tr></table></figure>
+<p>{: file=’_config.yml’ .nolineno}</p>
+<p>Once <code>img_cdn</code> is assigned, the CDN URL will be added to the path of all images (images of site avatar and posts) starting with <code>/</code>.</p>
+<p>For instance, when using images:</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">![<span class="string">The flower</span>](<span class="link">/path/to/flower.png</span>)</span><br></pre></td></tr></table></figure>
+<p>{: .nolineno}</p>
+<p>The parsing result will automatically add the CDN prefix <code>https://cdn.com</code> before the image path:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.com/path/to/flower.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;The flower&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>{: .nolineno}</p>
+<h2 id="Pinned-Posts"><a href="#Pinned-Posts" class="headerlink" title="Pinned Posts"></a>Pinned Posts</h2><p>You can pin one or more posts to the top of the home page, and the fixed posts are sorted in reverse order according to their release date. Enable by:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">pin:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Code-Block"><a href="#Code-Block" class="headerlink" title="Code Block"></a>Code Block</h2><p>Markdown symbols <code>```</code> can easily create a code block as follows:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">This is a plaintext code snippet.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Specifying-Language"><a href="#Specifying-Language" class="headerlink" title="Specifying Language"></a>Specifying Language</h3><p>Using <code>```&#123;language&#125;</code> you will get a code block with syntax highlight:</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">​<span class="code">```yaml</span></span><br><span class="line"><span class="code">key: value</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Limitation</strong>: The Jekyll style <code>highlight</code> tag is not compatible with this theme.</p>
+</blockquote>
+<h3 id="Line-Number"><a href="#Line-Number" class="headerlink" title="Line Number"></a>Line Number</h3><p>By default, all languages except <code>plaintext</code>, <code>console</code>, and <code>terminal</code> will display line numbers. When you want to hide the line number of the code block, you can append <code>&#123;: .nolineno&#125;</code> at the next line:</p>
+<p>​````markdown<br>​```shell<br>echo ‘No more line numbers!’</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;: .nolineno&#125;</span><br><span class="line">````</span><br><span class="line"></span><br><span class="line">### Specifying the Filename</span><br><span class="line"></span><br><span class="line">You may have noticed that the code language will be displayed on the left side of the header of the code block. If you want to replace it with the file name, you can add the attribute `file` to achieve this:</span><br><span class="line"></span><br><span class="line">​````markdown</span><br><span class="line">​```shell</span><br><span class="line"># content</span><br></pre></td></tr></table></figure>
+<p>{: file=”path/to/file” }</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### Liquid Codes</span><br><span class="line"></span><br><span class="line">If you want to display the **Liquid** snippet, surround the liquid code with `&#123;% raw %&#125;` and `&#123;% endraw %&#125;`:</span><br><span class="line"></span><br><span class="line">​````markdown</span><br><span class="line">&#123;% raw %&#125;</span><br><span class="line">​```liquid</span><br><span class="line">&#123;% if product.title contains &#x27;Pack&#x27; %&#125;</span><br><span class="line">  This product&#x27;s title contains the word Pack.</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line">```</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Or adding <code>render_with_liquid: false</code> (Requires Jekyll 4.0 or higher) to the post’s YAML block.</p>
+<h2 id="Learn-More"><a href="#Learn-More" class="headerlink" title="Learn More"></a>Learn More</h2><p>For more knowledge about Jekyll posts, visit the <a href="https://jekyllrb.com/docs/posts/">Jekyll Docs: Posts</a>.</p>
+]]></content>
+      <categories>
+        <category>Blogging</category>
+        <category>Tutorial</category>
+      </categories>
+      <tags>
+        <tag>writing</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Text and Typography</title>
+    <url>/2019/08/08/2019-08-08-text-and-typography/</url>
+    <content><![CDATA[<p>This post is to show Markdown syntax rendering on <a href="https://github.com/cotes2020/jekyll-theme-chirpy/fork"><strong>Chirpy</strong></a>, you can also use it as an example of writing. Now, let’s start looking at text and typography.</p>
+<h2 id="Titles"><a href="#Titles" class="headerlink" title="Titles"></a>Titles</h2><hr>
+<h1 id="H1-heading"><a href="#H1-heading" class="headerlink" title="H1 - heading"></a>H1 - heading</h1><h2 data-toc-skip>H2 - heading</h2>
+
+<h3 data-toc-skip>H3 - heading</h3>
+
+<h4>H4 - heading</h4>
+---
+<br>
+
+<span id="more"></span>
+
+<h2 id="Paragraph"><a href="#Paragraph" class="headerlink" title="Paragraph"></a>Paragraph</h2><p>I wandered lonely as a cloud</p>
+<p>That floats on high o’er vales and hills,</p>
+<p>When all at once I saw a crowd,</p>
+<p>A host, of golden daffodils;</p>
+<p>Beside the lake, beneath the trees,</p>
+<p>Fluttering and dancing in the breeze.</p>
+<h2 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h2><h3 id="Ordered-list"><a href="#Ordered-list" class="headerlink" title="Ordered list"></a>Ordered list</h3><ol>
+<li>Firstly</li>
+<li>Secondly</li>
+<li>Thirdly</li>
+</ol>
+<h3 id="Unordered-list"><a href="#Unordered-list" class="headerlink" title="Unordered list"></a>Unordered list</h3><ul>
+<li>Chapter<ul>
+<li>Section<ul>
+<li>Paragraph</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Task-list"><a href="#Task-list" class="headerlink" title="Task list"></a>Task list</h3><ul>
+<li><input disabled="" type="checkbox"> TODO</li>
+<li><input checked="" disabled="" type="checkbox"> Completed</li>
+<li><input disabled="" type="checkbox"> Defeat COVID-19<ul>
+<li><input checked="" disabled="" type="checkbox"> Vaccine production</li>
+<li><input disabled="" type="checkbox"> Economic recovery</li>
+<li><input disabled="" type="checkbox"> People smile again</li>
+</ul>
+</li>
+</ul>
+<h3 id="Description-list"><a href="#Description-list" class="headerlink" title="Description list"></a>Description list</h3><dl><dt>Sun</dt><dd>the star around which the earth orbits</dd></dl><dl><dt>Moon</dt><dd>the natural satellite of the earth, visible by reflected light from the sun</dd></dl><h2 id="Block-Quote"><a href="#Block-Quote" class="headerlink" title="Block Quote"></a>Block Quote</h2><blockquote>
+<p>This line to shows the Block Quote.</p>
+</blockquote>
+<h2 id="Tables"><a href="#Tables" class="headerlink" title="Tables"></a>Tables</h2><table>
+<thead>
+<tr>
+<th align="left">Company</th>
+<th align="left">Contact</th>
+<th align="right">Country</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Alfreds Futterkiste</td>
+<td align="left">Maria Anders</td>
+<td align="right">Germany</td>
+</tr>
+<tr>
+<td align="left">Island Trading</td>
+<td align="left">Helen Bennett</td>
+<td align="right">UK</td>
+</tr>
+<tr>
+<td align="left">Magazzini Alimentari Riuniti</td>
+<td align="left">Giovanni Rovelli</td>
+<td align="right">Italy</td>
+</tr>
+</tbody></table>
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><p><a href="http://127.0.0.1:4000/">http://127.0.0.1:4000</a></p>
+<h2 id="Footnote"><a href="#Footnote" class="headerlink" title="Footnote"></a>Footnote</h2><p>Click the hook will locate the footnote[^footnote], and here is another footnote[^fn-nth-2].</p>
+<h2 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h2><ul>
+<li>Default (with caption)</li>
+</ul>
+<p><img src="/posts/20190808/mockup.png" alt="Desktop View">{: width=”972” height=”589” }<br><em>Full screen width and center alignment</em></p>
+<br>
+
+<ul>
+<li>Shadow</li>
+</ul>
+<p><img src="/posts/20190808/window.png" alt="Window shadow">{: .shadow width=”1548” height=”864” style=”max-width: 90%” }<br><em>shadow effect (visible in light mode)</em></p>
+<br>
+
+<ul>
+<li>Left aligned</li>
+</ul>
+<p><img src="/posts/20190808/mockup.png" alt="Desktop View">{: width=”972” height=”589” style=”max-width: 70%” .normal}</p>
+<br>
+
+<ul>
+<li><p>Float to left</p>
+<p><img src="/posts/20190808/mockup.png" alt="Desktop View">{: width=”972” height=”589” style=”max-width: 200px” .left}<br>“A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space.”</p>
+</li>
+</ul>
+<br>
+
+<ul>
+<li><p>Float to right</p>
+<p><img src="/posts/20190808/mockup.png" alt="Desktop View">{: width=”972” height=”589” style=”max-width: 200px” .right}<br>“A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space. A repetitive and meaningless text is used to fill the space.”</p>
+</li>
+</ul>
+<br>
+
+<h2 id="Mermaid-SVG"><a href="#Mermaid-SVG" class="headerlink" title="Mermaid SVG"></a>Mermaid SVG</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gantt</span><br><span class="line"> title  Adding GANTT diagram functionality to mermaid</span><br><span class="line"> apple :a, 2017-07-20, 1w</span><br><span class="line"> banana :crit, b, 2017-07-23, 1d</span><br><span class="line"> cherry :active, c, after b a, 1d</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Mathematics"><a href="#Mathematics" class="headerlink" title="Mathematics"></a>Mathematics</h2><p>The mathematics powered by <a href="https://www.mathjax.org/"><strong>MathJax</strong></a>:</p>
+<p>$$ \sum_{n=1}^\infty 1/n^2 = \frac{\pi^2}{6} $$</p>
+<p>When $a \ne 0$, there are two solutions to $ax^2 + bx + c = 0$ and they are</p>
+<p>$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$</p>
+<h2 id="Inline-code"><a href="#Inline-code" class="headerlink" title="Inline code"></a>Inline code</h2><p>This is an example of <code>Inline Code</code>.</p>
+<h2 id="Code-block"><a href="#Code-block" class="headerlink" title="Code block"></a>Code block</h2><h3 id="Common"><a href="#Common" class="headerlink" title="Common"></a>Common</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">This is a common code snippet, without syntax highlight and line number.</span><br></pre></td></tr></table></figure>
+
+<h3 id="Specific-Languages"><a href="#Specific-Languages" class="headerlink" title="Specific Languages"></a>Specific Languages</h3><h4 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h4><figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> env |grep SHELL</span></span><br><span class="line">SHELL=/usr/local/bin/bash</span><br><span class="line">PYENV_SHELL=bash</span><br></pre></td></tr></table></figure>
+
+<h4 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> [ $? -ne 0 ]; <span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;The command was not successful.&quot;</span>;</span><br><span class="line">    <span class="comment">#do the needful / exit</span></span><br><span class="line"><span class="keyword">fi</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Specific-filename"><a href="#Specific-filename" class="headerlink" title="Specific filename"></a>Specific filename</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@import</span><br><span class="line">  &quot;colors/light-typography&quot;,</span><br><span class="line">  &quot;colors/dark-typography&quot;</span><br></pre></td></tr></table></figure>
+<p>{: file=’_sass/jekyll-theme-chirpy.scss’}</p>
+<h2 id="Reverse-Footnote"><a href="#Reverse-Footnote" class="headerlink" title="Reverse Footnote"></a>Reverse Footnote</h2><p>[^footnote]: The footnote source<br>[^fn-nth-2]: The 2nd footnote source</p>
+]]></content>
+      <categories>
+        <category>Blogging</category>
+        <category>Demo</category>
+      </categories>
+      <tags>
+        <tag>typography</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Getting Started</title>
+    <url>/2019/08/09/2019-08-09-getting-started/</url>
+    <content><![CDATA[<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><p>Follow the instructions in the <a href="https://jekyllrb.com/docs/installation/">Jekyll Docs</a> to complete the installation of <code>Ruby</code>, <code>RubyGems</code>, <code>Jekyll</code>, and <code>Bundler</code>.</p>
+<span id="more"></span>
+
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Creating-a-New-Site"><a href="#Creating-a-New-Site" class="headerlink" title="Creating a New Site"></a>Creating a New Site</h3><p>There are two ways to create a new repository for this theme:</p>
+<ul>
+<li><a href="#option-1-using-the-chirpy-starter"><strong>Using the Chirpy Starter</strong></a> - Easy to upgrade, isolates irrelevant project files so you can focus on writing.</li>
+<li><a href="#option-2-forking-on-github"><strong>Forking on GitHub</strong></a> - Convenient for custom development, but difficult to upgrade. Unless you are familiar with Jekyll and are determined to tweak or contribute to this project, this approach is not recommended.</li>
+</ul>
+<h4 id="Option-1-Using-the-Chirpy-Starter"><a href="#Option-1-Using-the-Chirpy-Starter" class="headerlink" title="Option 1. Using the Chirpy Starter"></a>Option 1. Using the Chirpy Starter</h4><p>Create a new repository from the <a href="https://github.com/cotes2020/chirpy-starter/generate"><strong>Chirpy Starter</strong></a> and name it <code>&lt;GH_USERNAME&gt;.github.io</code>, where <code>GH_USERNAME</code> represents your GitHub username.</p>
+<h4 id="Option-2-Forking-on-GitHub"><a href="#Option-2-Forking-on-GitHub" class="headerlink" title="Option 2. Forking on GitHub"></a>Option 2. Forking on GitHub</h4><p><a href="https://github.com/cotes2020/jekyll-theme-chirpy/fork">Fork <strong>Chirpy</strong></a> on GitHub and rename it to <code>&lt;GH_USERNAME&gt;.github.io</code>. Please note that the default branch code is in development.  If you want the site to be stable, please switch to the <a href="https://github.com/cotes2020/jekyll-theme-chirpy/tags">latest tag</a> and start writing.</p>
+<p>And then execute:</p>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> bash tools/init.sh</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>Note</strong>: If you don’t want to deploy your site on GitHub Pages, append option <code>--no-gh</code> at the end of the above command.</p>
+</blockquote>
+<p>The above command will:</p>
+<ol>
+<li><p>Removes some files or directories from your repository:</p>
+<ul>
+<li><code>.travis.yml</code></li>
+<li>files under <code>_posts</code></li>
+<li>folder <code>docs</code></li>
+</ul>
+</li>
+<li><p>If the option <code>--no-gh</code> is provided, the directory <code>.github</code> will be deleted. Otherwise, set up the GitHub Action workflow by removing the extension <code>.hook</code> of <code>.github/workflows/pages-deploy.yml.hook</code>, and then remove the other files and directories in the folder <code>.github</code>.</p>
+</li>
+<li><p>Removes item <code>Gemfile.lock</code> from <code>.gitignore</code>.</p>
+</li>
+<li><p>Creates a new commit to save the changes automatically.</p>
+</li>
+</ol>
+<h3 id="Installing-Dependencies"><a href="#Installing-Dependencies" class="headerlink" title="Installing Dependencies"></a>Installing Dependencies</h3><p>Before running for the first time, go to the root directory of your site, and install dependencies as follows:</p>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> bundle</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><h3 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h3><p>Update the variables of <code>_config.yml</code> as needed. Some of them are typical options:</p>
+<ul>
+<li><code>url</code></li>
+<li><code>avatar</code></li>
+<li><code>timezone</code></li>
+<li><code>lang</code></li>
+</ul>
+<h3 id="Customing-Stylesheet"><a href="#Customing-Stylesheet" class="headerlink" title="Customing Stylesheet"></a>Customing Stylesheet</h3><p>If you need to customize the stylesheet, copy the theme’s <code>assets/css/style.scss</code> to the same path on your Jekyll site, and then add the custom style at the end of the style file.</p>
+<p>Starting from <a href="https://github.com/cotes2020/jekyll-theme-chirpy/releases/tag/v4.1.0"><code>v4.1.0</code></a>, if you want to overwrite the SASS variables defined in <code>_sass/addon/variables.scss</code>, create a new file <code>_sass/variables-hook.scss</code> and assign new values to the target variable in it.</p>
+<h3 id="Running-Local-Server"><a href="#Running-Local-Server" class="headerlink" title="Running Local Server"></a>Running Local Server</h3><p>You may want to preview the site contents before publishing, so just run it by:</p>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> bundle <span class="built_in">exec</span> jekyll s</span></span><br></pre></td></tr></table></figure>
+
+<p>Or run the site on Docker with the following command:</p>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -it --rm \</span></span><br><span class="line"><span class="bash">    --volume=<span class="string">&quot;<span class="variable">$PWD</span>:/srv/jekyll&quot;</span> \</span></span><br><span class="line"><span class="bash">    -p 4000:4000 jekyll/jekyll \</span></span><br><span class="line"><span class="bash">    jekyll serve</span></span><br></pre></td></tr></table></figure>
+
+<p>After a while, the local service will be published at <em><a href="http://127.0.0.1:4000/">http://127.0.0.1:4000</a></em>.</p>
+<h3 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h3><p>Before the deployment begins, check out the file <code>_config.yml</code> and make sure the <code>url</code> is configured correctly. Furthermore, if you prefer the <a href="https://help.github.com/en/github/working-with-github-pages/about-github-pages#types-of-github-pages-sites"><strong>project site</strong></a> and don’t use a custom domain, or you want to visit your website with a base URL on a web server other than <strong>GitHub Pages</strong>, remember to change the <code>baseurl</code> to your project name that starts with a slash, e.g, <code>/project-name</code>.</p>
+<p>Now you can choose ONE of the following methods to deploy your Jekyll site.</p>
+<h4 id="Deploy-by-Using-Github-Actions"><a href="#Deploy-by-Using-Github-Actions" class="headerlink" title="Deploy by Using Github Actions"></a>Deploy by Using Github Actions</h4><p>For security reasons, GitHub Pages build runs on <code>safe</code> mode, which restricts us from using plugins to generate additional page files. Therefore, we can use <strong>GitHub Actions</strong> to build the site, store the built site files on a new branch, and use that branch as the source of the GitHub Pages service.</p>
+<p>Quickly check the files needed for GitHub Actions build:</p>
+<ul>
+<li><p>Ensure your Jekyll site has the file <code>.github/workflows/pages-deploy.yml</code>. Otherwise, create a new one and fill in the contents of the <a href="https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/.github/workflows/pages-deploy.yml.hook">sample file</a>, and the value of the <code>on.push.branches</code> should be the same as your repo’s default branch name.</p>
+</li>
+<li><p>Ensure your Jekyll site has file <code>tools/deploy.sh</code>. Otherwise, copy it from here to your Jekyll site.</p>
+</li>
+<li><p>Furthermore, if you have committed <code>Gemfile.lock</code> to the repo, and your runtime system is not Linux, don’t forget to update the platform list in the lock file:</p>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> bundle lock --add-platform x86_64-linux</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>After the above steps, rename your repository to <code>&lt;GH_USERNAME&gt;.github.io</code> on GitHub.</p>
+<p>Now publish your Jekyll site by:</p>
+<ol>
+<li><p>Push any commit to remote to trigger the GitHub Actions workflow. Once the build is complete and successful, a new remote branch named <code>gh-pages</code> will appear to store the built site files.</p>
+</li>
+<li><p>Browse to your repository on GitHub. Select the tab <em>Settings</em>, then click <em>Pages</em> in the left navigation bar, and then in the section <strong>Source</strong> of <em>GitHub Pages</em>, select the <code>/(root)</code> directory of branch <code>gh-pages</code> as the <a href="https://docs.github.com/en/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">publishing source</a>. Remember to click <kbd>Save</kbd> before leaving.</p>
+<p> <img src="/posts/20190809/gh-pages-sources.png" alt="gh-pages-sources">{: width=”850” height=”153” }</p>
+</li>
+<li><p>Visit your website at the address indicated by GitHub.</p>
+</li>
+</ol>
+<h4 id="Manually-Build-and-Deploy"><a href="#Manually-Build-and-Deploy" class="headerlink" title="Manually Build and Deploy"></a>Manually Build and Deploy</h4><p>On self-hosted servers, you cannot enjoy the convenience of <strong>GitHub Actions</strong>. Therefore, you should build the site on your local machine and then upload the site files to the server.</p>
+<p>Go to the root of the source project, and build your site as follows:</p>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> JEKYLL_ENV=production bundle <span class="built_in">exec</span> jekyll b</span></span><br></pre></td></tr></table></figure>
+
+<p>Or build the site on Docker:</p>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run -it --rm \</span></span><br><span class="line"><span class="bash">    --env JEKYLL_ENV=production \</span></span><br><span class="line"><span class="bash">    --volume=<span class="string">&quot;<span class="variable">$PWD</span>:/srv/jekyll&quot;</span> \</span></span><br><span class="line"><span class="bash">    jekyll/jekyll \</span></span><br><span class="line"><span class="bash">    jekyll build</span></span><br></pre></td></tr></table></figure>
+
+<p>Unless you specified the output path, the generated site files will be placed in folder <code>_site</code> of the project’s root directory. Now you should upload those files to the target server.</p>
+<h3 id="Upgrading"><a href="#Upgrading" class="headerlink" title="Upgrading"></a>Upgrading</h3><p>It depends on how you use the theme:</p>
+<ul>
+<li><p>If you are using the theme gem (there will be <code>gem &quot;jekyll-theme-chirpy&quot;</code> in the <code>Gemfile</code>), editing the <code>Gemfile</code> and update the version number of the theme gem, for example:</p>
+  <figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">- gem &quot;jekyll-theme-chirpy&quot;, &quot;~&gt; 3.2&quot;, &quot;&gt;= 3.2.1&quot;</span></span><br><span class="line"><span class="addition">+ gem &quot;jekyll-theme-chirpy&quot;, &quot;~&gt; 3.3&quot;, &quot;&gt;= 3.3.0&quot;</span></span><br></pre></td></tr></table></figure>
+<p>  {: .nolineno file=”Gemfile” }</p>
+<p>  And then execute the following command:</p>
+  <figure class="highlight console"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> bundle update jekyll-theme-chirpy</span></span><br></pre></td></tr></table></figure>
+
+<p>  As the version upgrades, the critical files (for details, see the <a href="https://github.com/cotes2020/chirpy-starter">Startup Template</a>) and configuration options will change. Please refer to the <a href="https://github.com/cotes2020/jekyll-theme-chirpy/wiki/Upgrade-Guide">Upgrade Guide</a> to keep your repo’s files in sync with the latest version of the theme.</p>
+</li>
+<li><p>If you forked from the source project (there will be <code>gemspec</code> in the <code>Gemfile</code> of your site), then merge the <a href="https://github.com/cotes2020/jekyll-theme-chirpy/tags">latest upstream tags</a> into your Jekyll site to complete the upgrade.<br>The merge is likely to conflict with your local modifications. Please be patient and careful to resolve these conflicts.</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Blogging</category>
+        <category>Tutorial</category>
+      </categories>
+      <tags>
+        <tag>getting started</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Customize the Favicon</title>
+    <url>/2019/08/11/2019-08-11-customize-the-favicon/</url>
+    <content><![CDATA[<p>The <a href="https://www.favicon-generator.org/about/">favicons</a> of <a href="https://github.com/cotes2020/jekyll-theme-chirpy/"><strong>Chirpy</strong></a> are placed in the directory <code>assets/img/favicons/</code>. You may want to replace them with your own. The following sections will guide you to create and replace the default favicons.</p>
+<span id="more"></span>
+
+<h2 id="Generate-the-favicon"><a href="#Generate-the-favicon" class="headerlink" title="Generate the favicon"></a>Generate the favicon</h2><p>Prepare a square image (PNG, JPG, or SVG) with a size of 512x512 or more, and then go to the online tool <a href="https://realfavicongenerator.net/"><strong>Real Favicon Generator</strong></a> and click the button <kbd>Select your Favicon image</kbd> to upload your image file.</p>
+<p>In the next step, the webpage will show all usage scenarios. You can keep the default options, scroll to the bottom of the page, and click the button <kbd>Generate your Favicons and HTML code</kbd> to generate the favicon.</p>
+<h2 id="Download-amp-Replace"><a href="#Download-amp-Replace" class="headerlink" title="Download &amp; Replace"></a>Download &amp; Replace</h2><p>Download the generated package, unzip and delete the following two from the extracted files:</p>
+<ul>
+<li><code>browserconfig.xml</code></li>
+<li><code>site.webmanifest</code></li>
+</ul>
+<p>Now, copy the remaining image files (<code>PNG</code> and <code>ICO</code>) to cover the original files in the folder <code>assets/img/favicons/</code> of your Jekyll site. If your Jekyll site doesn’t have this directory yet, just create one.</p>
+<p>The following table will help you understand the changes to the favicon files:</p>
+<table>
+<thead>
+<tr>
+<th>File(s)</th>
+<th align="center">From Online Tool</th>
+<th align="center">From Chirpy</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>*.PNG</code></td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td><code>*.ICO</code></td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td><code>browserconfig.xml</code></td>
+<td align="center">✗</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td><code>site.webmanifest</code></td>
+<td align="center">✗</td>
+<td align="center">✓</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Note: ✓ means keep, ✗ means delete.</p>
+</blockquote>
+<p>The next time you build the site, the favicon will be replaced with a customized edition.</p>
+]]></content>
+      <categories>
+        <category>Blogging</category>
+        <category>Tutorial</category>
+      </categories>
+      <tags>
+        <tag>favicon</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Enable Google Page Views</title>
+    <url>/2021/01/04/2021-01-03-enable-google-pv/</url>
+    <content><![CDATA[<p>This post is to enable Page Views on the <a href="https://github.com/cotes2020/jekyll-theme-chirpy/"><strong>Chirpy</strong></a> theme based blog that you just built. This requires technical knowledge and it’s recommended to keep the <code>google_analytics.pv.*</code> empty unless you have a good reason. If your website has low traffic, the page views count would discourage you to write more blogs. With that said, let’s start with the setup.</p>
+<span id="more"></span>
+
+<h2 id="Set-up-Google-Analytics"><a href="#Set-up-Google-Analytics" class="headerlink" title="Set up Google Analytics"></a>Set up Google Analytics</h2><h3 id="Create-GA-account-and-property"><a href="#Create-GA-account-and-property" class="headerlink" title="Create GA account and property"></a>Create GA account and property</h3><p>First, you need to set up your account on Google analytics. While you create your account, you must create your first <strong>Property</strong> as well.</p>
+<ol>
+<li>Head to <a href="https://analytics.google.com/">https://analytics.google.com/</a> and click on <strong>Start Measuring</strong></li>
+<li>Enter your desired <em>Account Name</em> and choose the desired checkboxes</li>
+<li>Enter your desired <em>Property Name</em>. This is the name of the tracker project that appears on your Google Analytics dashboard</li>
+<li>Enter the required information <em>About your business</em></li>
+<li>Hit <em>Create</em> and accept any license popup to set up your Google Analytics account and create your property</li>
+</ol>
+<h3 id="Create-Data-Stream"><a href="#Create-Data-Stream" class="headerlink" title="Create Data Stream"></a>Create Data Stream</h3><p>With your property created, you now need to set up Data Stream to track your blog traffic. After you signup, the prompt should automatically take you to create your first <strong>Data Stream</strong>. If not, follow these steps:</p>
+<ol>
+<li>Go to <strong>Admin</strong> on the left column</li>
+<li>Select the desired property from the drop-down on the second column</li>
+<li>Click on <strong>Data Streams</strong></li>
+<li>Add a stream and click on <strong>Web</strong></li>
+<li>Enter your blog’s URL</li>
+</ol>
+<p>It should look like this:</p>
+<p><img src="/posts/20210103/01-google-analytics-data-stream.png" alt="google-analytics-data-stream">{: width=”1086” height=”542”}</p>
+<p>Now, click on the new data stream and grab the <strong>Measurement ID</strong>. It should look something like <code>G-V6XXXXXXXX</code>. Copy this to your <code>_config.yml</code> file</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">google_analytics:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">&#x27;G-V6XXXXXXX&#x27;</span>   <span class="comment"># fill in your Google Analytics ID</span></span><br><span class="line">  <span class="comment"># Google Analytics pageviews report settings</span></span><br><span class="line">  <span class="attr">pv:</span></span><br><span class="line">    <span class="attr">proxy_endpoint:</span>   <span class="comment"># fill in the Google Analytics superProxy endpoint of Google App Engine</span></span><br><span class="line">    <span class="attr">cache_path:</span>       <span class="comment"># the local PV cache data, friendly to visitors from GFW region</span></span><br></pre></td></tr></table></figure>
+<p>{: file=”_config.yml”}</p>
+<p>When you push these changes to your blog, you should start seeing the traffic on your Google Analytics. Play around with the Google Analytics dashboard to get familiar with the options available as it takes like 5 mins to pick up your changes. You should now be able to monitor your traffic in real time.</p>
+<p><img src="/posts/20210103/02-google-analytics-realtime.png" alt="google-analytics-realtime">{: width=”616” height=”557”}</p>
+<h2 id="Setup-Page-Views"><a href="#Setup-Page-Views" class="headerlink" title="Setup Page Views"></a>Setup Page Views</h2><p>There is a detailed <a href="https://developers.google.com/analytics/solutions/google-analytics-super-proxy">tutorial</a> available to set up Google Analytics superProxy. But, if you are interested to just quickly get your Chirpy-based blog display page views, follow along. These steps were tested on a Linux machine. If you are running Windows, you can use the Git bash terminal to run Unix-like commands.</p>
+<h3 id="Setup-Google-App-Engine"><a href="#Setup-Google-App-Engine" class="headerlink" title="Setup Google App Engine"></a>Setup Google App Engine</h3><ol>
+<li><p>Visit <a href="https://console.cloud.google.com/appengine">https://console.cloud.google.com/appengine</a></p>
+</li>
+<li><p>Click on <strong>Create Application</strong></p>
+</li>
+<li><p>Click on <strong>Create Project</strong></p>
+</li>
+<li><p>Enter the name and choose the data center close to you</p>
+</li>
+<li><p>Select <strong>Python</strong> language and <strong>Standard</strong> environment</p>
+</li>
+<li><p>Enable billing account. Yeah, you have to link your credit card. But, you won’t be billed unless you exceed your free quota. For a simple blog, the free quota is more than sufficient.</p>
+</li>
+<li><p>Go to your App Engine dashboard on your browser and select <strong>API &amp; Services</strong> from the left navigation menu</p>
+</li>
+<li><p>Click on <strong>Enable APIs and Services</strong> button on the top</p>
+</li>
+<li><p>Enable the following APIs: <em>Google Analytics API</em></p>
+</li>
+<li><p>On the left, Click on <em>OAuth Consent Screen</em> and accept <strong>Configure Consent Screen</strong>. Select <strong>External</strong> since your blog is probably hosted for the public. Click on <strong>Publish</strong> under <em>Publishing Status</em></p>
+</li>
+<li><p>Click on <strong>Credentials</strong> on the left and create a new <strong>OAuth Client IDs</strong> credential. Make sure to add an entry under <code>Authorized redirect URIs</code> that matches: <code>https://&lt;project-id&gt;.&lt;region&gt;.r.appspot.com/admin/auth</code></p>
+</li>
+<li><p>Note down the <strong>Your Client ID</strong> and <strong>Your Client Secret</strong>. You’ll need this in the next section.</p>
+</li>
+<li><p>Download and install the cloud SDK for your platform: <a href="https://cloud.google.com/sdk/docs/quickstart">https://cloud.google.com/sdk/docs/quickstart</a></p>
+</li>
+<li><p>Run the following commands:</p>
+<figure class="highlight console"><table><tr><td class="code"><pre><span class="line">[root@bc96abf71ef8 /]# gcloud init</span><br><span class="line"></span><br><span class="line">~snip~</span><br><span class="line"></span><br><span class="line">Go to the following link in your browser:</span><br><span class="line"></span><br><span class="line">    https://accounts.google.com/o/oauth2/auth?response_type=code&amp;client_id=XYZ.apps.googleusercontent.com&amp;redirect_uri=ABCDEFG</span><br><span class="line"></span><br><span class="line">Enter verification code: &lt;VERIFICATION CODE THAT YOU GET AFTER YOU VISIT AND AUTHENTICATE FROM THE ABOVE LINK&gt;</span><br><span class="line"></span><br><span class="line">You are logged in as: [blah_blah@gmail.com].</span><br><span class="line"></span><br><span class="line">Pick cloud project to use:</span><br><span class="line">[1] chirpy-test-300716</span><br><span class="line">[2] Create a new project</span><br><span class="line">Please enter numeric choice or text value (must exactly match list</span><br><span class="line">item): 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@bc96abf71ef8 /]# gcloud info</span><br><span class="line"><span class="meta">#</span><span class="bash"> Your selected project info should be displayed here</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="Setup-Google-Analytics-superProxy"><a href="#Setup-Google-Analytics-superProxy" class="headerlink" title="Setup Google Analytics superProxy"></a>Setup Google Analytics superProxy</h3><ol>
+<li><p>Clone the <strong>Google Analytics superProxy</strong> project on Github: <a href="https://github.com/googleanalytics/google-analytics-super-proxy">https://github.com/googleanalytics/google-analytics-super-proxy</a> to your local.</p>
+</li>
+<li><p>Remove the first 2 lines in the <a href="https://github.com/googleanalytics/google-analytics-super-proxy/blob/master/src/app.yaml#L1-L2"><code>src/app.yaml</code></a> file:</p>
+<figure class="highlight diff"><table><tr><td class="code"><pre><span class="line"><span class="deletion">- application: your-project-id</span></span><br><span class="line"><span class="deletion">- version: 1</span></span><br></pre></td></tr></table></figure></li>
+<li><p>In <code>src/config.py</code>, add the <code>OAUTH_CLIENT_ID</code> and <code>OAUTH_CLIENT_SECRET</code> that you gathered from your App Engine Dashboard.</p>
+</li>
+<li><p>Enter any random key for <code>XSRF_KEY</code>, your <code>config.py</code> should look similar to this</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python2.7</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&#x27;pete.frisella@gmail.com (Pete Frisella)&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># OAuth 2.0 Client Settings</span></span><br><span class="line">AUTH_CONFIG = &#123;</span><br><span class="line">  <span class="string">&#x27;OAUTH_CLIENT_ID&#x27;</span>: <span class="string">&#x27;YOUR_CLIENT_ID&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;OAUTH_CLIENT_SECRET&#x27;</span>: <span class="string">&#x27;YOUR_CLIENT_SECRET&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;OAUTH_REDIRECT_URI&#x27;</span>: <span class="string">&#x27;%s%s&#x27;</span> % (</span><br><span class="line">    <span class="string">&#x27;https://chirpy-test-XXXXXX.ue.r.appspot.com&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;/admin/auth&#x27;</span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># XSRF Settings</span></span><br><span class="line">XSRF_KEY = <span class="string">&#x27;OnceUponATimeThereLivedALegend&#x27;</span></span><br></pre></td></tr></table></figure>
+<p> {: file=”src/config.py”}</p>
+<p> <strong>Tip:</strong> You can configure a custom domain instead of <code>https://PROJECT_ID.REGION_ID.r.appspot.com</code>. But, for the sake of keeping it simple, we will be using the Google provided default URL.</p>
+</li>
+<li><p>From inside the src/ directory, deploy the app</p>
+ <figure class="highlight console"><table><tr><td class="code"><pre><span class="line">[root@bc96abf71ef8 src]# gcloud app deploy</span><br><span class="line">Services to deploy:</span><br><span class="line"></span><br><span class="line">descriptor:      [/tmp/google-analytics-super-proxy/src/app.yaml]</span><br><span class="line">source:          [/tmp/google-analytics-super-proxy/src]</span><br><span class="line">target project:  [chirpy-test-XXXX]</span><br><span class="line">target service:  [default]</span><br><span class="line">target version:  [VESRION_NUM]</span><br><span class="line">target url:      [https://chirpy-test-XXXX.ue.r.appspot.com]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Do you want to continue (Y/n)? Y</span><br><span class="line"></span><br><span class="line">Beginning deployment of service [default]...</span><br><span class="line">╔════════════════════════════════════════════════════════════╗</span><br><span class="line">╠═ Uploading 1 file to Google Cloud Storage                 ═╣</span><br><span class="line">╚════════════════════════════════════════════════════════════╝</span><br><span class="line">File upload done.</span><br><span class="line">Updating service [default]...done.</span><br><span class="line">Setting traffic split for service [default]...done.</span><br><span class="line">Deployed service [default] to [https://chirpy-test-XXXX.ue.r.appspot.com]</span><br><span class="line"></span><br><span class="line">You can stream logs from the command line by running:</span><br><span class="line"><span class="meta">$</span><span class="bash"> gcloud app logs tail -s default</span></span><br><span class="line"></span><br><span class="line">To view your application in the web browser run:</span><br><span class="line"><span class="meta">$</span><span class="bash"> gcloud app browse</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Visit the deployed service. Add a <code>/admin</code> to the end of the URL.</p>
+</li>
+<li><p>Click on <strong>Authorize Users</strong> and make sure to add yourself as a managed user.</p>
+</li>
+<li><p>If you get any errors, please Google it. The errors are self-explanatory and should be easy to fix.</p>
+</li>
+</ol>
+<p>If everything went good, you’ll get this screen:</p>
+<p><img src="/posts/20210103/03-superProxy-deployed.png" alt="superProxy-deployed">{: width=”1366” height=”354”}</p>
+<h3 id="Create-Google-Analytics-Query"><a href="#Create-Google-Analytics-Query" class="headerlink" title="Create Google Analytics Query"></a>Create Google Analytics Query</h3><p>Head to <code>https://PROJECT_ID.REGION_ID.r.appspot.com/admin</code> and create a query after verifying the account. <strong>GA Core Reporting API</strong> query request can be created in <a href="https://ga-dev-tools.appspot.com/query-explorer/">Query Explorer</a>.</p>
+<p>The query parameters are as follows:</p>
+<ul>
+<li><strong>start-date</strong>: fill in the first day of blog posting</li>
+<li><strong>end-date</strong>: fill in <code>today</code> (this is a parameter supported by GA Report, which means that it will always end according to the current query date)</li>
+<li><strong>metrics</strong>: select <code>ga:pageviews</code></li>
+<li><strong>dimensions</strong>: select <code>ga:pagePath</code></li>
+</ul>
+<p>In order to reduce the returned results and reduce the network bandwidth, we add custom filtering rules [^ga-filters]:</p>
+<ul>
+<li><p><strong>filters</strong>: fill in <code>ga:pagePath=~^/posts/.*/$;ga:pagePath!@=</code>.</p>
+<p>  Among them, <code>;</code> means using <em>logical AND</em> to concatenate two rules.</p>
+<p>  If the <code>site.baseurl</code> is specified, change the first filtering rule to <code>ga:pagePath=~^/BASE_URL/posts/.*/$</code>, where <code>BASE_URL</code> is the value of <code>site.baseurl</code>.</p>
+</li>
+</ul>
+<p>After <kbd>Run Query</kbd>, copy the generated contents of <strong>API Query URI</strong> at the bottom of the page and fill in the <strong>Encoded URI for the query</strong> of SuperProxy on GAE.</p>
+<p>After the query is saved on GAE, a <strong>Public Endpoint</strong> (public access address) will be generated, and we will get the query result in JSON format when accessing it. Finally, click <kbd>Enable Endpoint</kbd> in <strong>Public Request Endpoint</strong> to make the query effective, and click <kbd>Start Scheduling</kbd> in <strong>Scheduling</strong> to start the scheduled task.</p>
+<p><img src="/posts/20210103/04-superproxy-query.png" alt="superproxy-query">{: width=”1100” height=”126”}</p>
+<h2 id="Configure-Chirpy-to-Display-Page-View"><a href="#Configure-Chirpy-to-Display-Page-View" class="headerlink" title="Configure Chirpy to Display Page View"></a>Configure Chirpy to Display Page View</h2><p>Once all the hard part is done, it is very easy to enable the Page View on Chirpy theme. Your superProxy dashboard should look something like below and you can grab the required values.</p>
+<p><img src="/posts/20210103/05-superproxy-dashboard.png" alt="superproxy-dashboard">{: width=”1210” height=”694”}</p>
+<p>Update the <code>_config.yml</code> file of <a href="https://github.com/cotes2020/jekyll-theme-chirpy/"><strong>Chirpy</strong></a> project with the values from your dashboard, to look similar to the following:</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">google_analytics:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">&#x27;G-V6XXXXXXX&#x27;</span>   <span class="comment"># fill in your Google Analytics ID</span></span><br><span class="line">  <span class="attr">pv:</span></span><br><span class="line">    <span class="attr">proxy_endpoint:</span> <span class="string">&#x27;https://PROJECT_ID.REGION_ID.r.appspot.com/query?id=&lt;ID FROM SUPER PROXY&gt;&#x27;</span></span><br><span class="line">    <span class="attr">cache_path:</span>       <span class="comment"># the local PV cache data, friendly to visitors from GFW region</span></span><br></pre></td></tr></table></figure>
+<p>{: file=”_config.yml”}</p>
+<p>Now, you should see the Page View enabled on your blog.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>[^ga-filters]: <a href="https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters">Google Analytics Core Reporting API: Filters</a></p>
+]]></content>
+      <categories>
+        <category>Blogging</category>
+        <category>Tutorial</category>
+      </categories>
+      <tags>
+        <tag>google analytics</tag>
+        <tag>pageviews</tag>
+      </tags>
+  </entry>
+</search>
